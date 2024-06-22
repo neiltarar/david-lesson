@@ -16,7 +16,13 @@ const port = 3001;
 app.use(requestLogger);
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, "build")));
-app.use(cors());
+app.use(
+	cors({
+		origin: "http://localhost:3001", // replace with your frontend URL
+		methods: ["GET", "POST", "PUT", "DELETE"],
+		credentials: true,
+	})
+);
 app.use(express.json());
 // |
 // V
