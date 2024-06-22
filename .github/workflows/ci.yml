@@ -29,19 +29,4 @@ jobs:
 
       - name: Copy build to API folder
         run: |
-          cp -r movies-app-webclient/build/* movies-app-api/public/
-
-      - name: Install dependencies for API
-        run: |
-          cd movies-app-api
-          npm install
-
-      - name: Run API tests (optional)
-        run: |
-          cd movies-app-api
-          npm test
-
-      - name: Deploy API (optional)
-        run: |
-          cd movies-app-api
-          npm run deploy
+          cp -r movies-app-webclient/build/* movies-app-api/
