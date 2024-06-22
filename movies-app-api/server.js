@@ -18,7 +18,7 @@ app.use(requestLogger);
 app.use(express.static(path.join(__dirname, "build")));
 app.use(
 	cors({
-		origin: "http://localhost:3001", // replace with your frontend URL
+		origin: "https://david-lesson.onrender.com", // replace with your frontend URL
 		methods: ["GET", "POST", "PUT", "DELETE"],
 		credentials: true,
 	})
