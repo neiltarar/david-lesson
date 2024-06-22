@@ -20,17 +20,15 @@ app.use(cors());
 app.use(express.json());
 // |
 // V
-app.get("/", function (req, res) {
-	res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-// |
-// V
 app.use("/movies", moviesRouter);
 // |
 // V
 app.use("/search-history", searchHistoryRouter);
 // |
 // V
+app.get("*", function (req, res) {
+	res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 app.listen(port, function () {
 	console.log(`Working on port ${port}`);
 });
