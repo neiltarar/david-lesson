@@ -11,16 +11,13 @@ const path = require("path");
 connectDB();
 const port = 3001;
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, "build")));
-
-app.use(cors());
-app.use(express.json());
-// |
-// V
 // we are going to log the request info
 // before we move forward
 app.use(requestLogger);
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "build")));
+app.use(cors());
+app.use(express.json());
 // |
 // V
 app.get("/", function (req, res) {
