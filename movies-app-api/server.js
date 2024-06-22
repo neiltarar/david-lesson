@@ -5,9 +5,14 @@ const requestLogger = require("./middlewares/requestLogger");
 const moviesRouter = require("./routes/moviesRouter");
 const searchHistoryRouter = require("./routes/searchHistoryRouter");
 const app = express();
+const path = require("path");
+
 // Connect to MongoDB
 connectDB();
 const port = 3001;
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "build")));
 
 app.use(cors());
 app.use(express.json());
@@ -19,7 +24,7 @@ app.use(requestLogger);
 // |
 // V
 app.get("/", function (req, res) {
-  res.send("API is running now...");
+	res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 // |
 // V
@@ -30,5 +35,5 @@ app.use("/search-history", searchHistoryRouter);
 // |
 // V
 app.listen(port, function () {
-  console.log(`Working on port ${port}`);
+	console.log(`Working on port ${port}`);
 });
